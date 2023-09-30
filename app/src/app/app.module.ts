@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { httpInterceptorProvider } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
       preventDuplicates: true,
     })
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
