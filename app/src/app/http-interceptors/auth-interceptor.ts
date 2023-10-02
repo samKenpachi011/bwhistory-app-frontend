@@ -14,12 +14,15 @@ export class TokenInterceptor implements HttpInterceptor{
 
     const authToken = this.storageService.getToken()!
     if (authToken !== null){
+
+      console.log(`Auth token: ${authToken}`);
       req = req.clone({
         setHeaders: {
-          Authorization: `Token ${authToken}`,
+          Authorization: `${authToken}`,
           Accept: 'application/json',
         }
       });
+
     }
 
     return next.handle(req).pipe(catchError(this.handleError));

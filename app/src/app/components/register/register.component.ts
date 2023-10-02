@@ -21,16 +21,16 @@ export class RegisterComponent {
     this.registerform = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]],
+      password: ['', [Validators.required, Validators.minLength(5)]]
     });
   }
 
-  get f() { return this.registerform.controls }
+  get f() { return this.registerform.controls; }
 
   onRegister() {
 
     if (this.registerform.invalid){
-      return
+      return;
     }
     this.apiService.registerUser(this.registerform.value).subscribe(
       {
