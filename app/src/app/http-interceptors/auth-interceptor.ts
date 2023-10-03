@@ -8,18 +8,21 @@ import { LocalStoragManagerService } from "../services/local-storagemanager.serv
 export class TokenInterceptor implements HttpInterceptor{
   constructor(
     private router: Router,
-    private storageService: LocalStoragManagerService){}
+    private storageService: LocalStoragManagerService,){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const authToken = this.storageService.getToken()!;
+    const authToken = this.storageService.getToken()!
     if (authToken !== null){
+
+      console.log(`Auth token: ${authToken}`);
       req = req.clone({
         setHeaders: {
-          Authorization: `Token ${authToken}`,
+          Authorization: `${authToken}`,
           Accept: 'application/json',
         }
       });
+
     }
 
     return next.handle(req).pipe(catchError(this.handleError));

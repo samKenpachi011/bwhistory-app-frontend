@@ -13,6 +13,7 @@ export class LocalStoragManagerService {
       localStorage.setItem(this.DEFAULT_TOKEN_STORAGE_NAME, resToken.token);
       return resToken;
     }
+    return null;
   }
 
   public getToken(): string | null {
