@@ -17,4 +17,14 @@ export class AppApiService {
     return this.http.post(ServiceEndPoints.registerUser, data);
   }
 
+  attemptLogIn(data: any){
+    return this.http.post(
+      ServiceEndPoints.logInUser,
+      data).pipe(map(response => {
+        if (this.storageManager.tokenManagerRemove() === false) {
+          this.storageManager.tokenManagerAdd(response);
+        }
+      }));
+  }
+
 }
