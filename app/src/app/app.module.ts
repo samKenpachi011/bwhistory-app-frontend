@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { httpInterceptorProvider } from './http-interceptors';
 import { RegisterComponent } from './components/register/register.component';
 import { AppNavComponent } from './shared/app-nav/app-nav.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AppNavComponent } from './shared/app-nav/app-nav.component';
       closeButton: true,
       timeOut: 10000,
       preventDuplicates: true,
-    })
+    }),
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     httpInterceptorProvider
