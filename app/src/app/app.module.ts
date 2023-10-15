@@ -12,6 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { httpInterceptorProvider } from './http-interceptors';
 import { RegisterComponent } from './components/register/register.component';
+import { AppNavComponent } from './shared/app-nav/app-nav.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RegisterComponent } from './components/register/register.component';
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    RegisterComponent
+    RegisterComponent,
+    AppNavComponent
   ],
   imports: [
     BrowserModule,
