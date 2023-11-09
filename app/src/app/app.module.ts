@@ -19,6 +19,7 @@ import { EthnicGroupComponent } from './components/ethnic-group/ethnic-group-com
 import { EthnicGroupListComponent } from './components/ethnic-group/ethnic-group-list/ethnic-group-list.component';
 import { EthnicGroupCreateComponent } from './components/ethnic-group/ethnic-group-create/ethnic-group-create.component';
 import { EthnicGroupDetailComponent } from './components/ethnic-group/ethnic-group-detail/ethnic-group-detail.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EthnicGroupDetailComponent } from './components/ethnic-group/ethnic-gro
     HttpClientModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 10000,
