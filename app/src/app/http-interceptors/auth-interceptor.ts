@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor{
       console.log(`Auth token: ${authToken}`);
       req = req.clone({
         setHeaders: {
-          Authorization: `${authToken}`,
+          Authorization: `token ${authToken}`,
           Accept: 'application/json',
         }
       });
@@ -32,7 +32,7 @@ export class TokenInterceptor implements HttpInterceptor{
   private handleError(error: HttpErrorResponse){
     if (error.status === 401){
       localStorage.clear();
-      this.router.navigate(['/login']);
+      this.router.navigate(['login']);
     }
 
     return throwError(()=> new Error('Something went wrong: please try again '));

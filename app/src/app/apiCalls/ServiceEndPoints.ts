@@ -7,4 +7,8 @@ export class ServiceEndPoints {
   public static readonly apiBaseURL = `${this.baseURL}/api`;
   public static readonly registerUser = `${this.apiBaseURL}/user/create/`;
   public static readonly logInUser = `${this.apiBaseURL}/user/token/`;
+  public static readonly currentUser = `${this.apiBaseURL}/user/profile/`;
+
+  public static readonly createEthnicGroup = `${this.apiBaseURL}/ethnic_group/ethnic_groups/`;
+
 }

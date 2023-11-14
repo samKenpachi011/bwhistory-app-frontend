@@ -27,4 +27,18 @@ export class AppApiService {
       }));
   }
 
+  isUserStaff(): Observable<any>{
+    return this.http.get(ServiceEndPoints.currentUser).pipe(
+      map((response:any) => {return response['is_staff'] === true})
+
+      );
+  }
+
+  //ethnic group
+  createEthnicGroup(data: any){
+    console.log(data)
+    return this.http.post(ServiceEndPoints.createEthnicGroup, data);
+
+  }
+
 }

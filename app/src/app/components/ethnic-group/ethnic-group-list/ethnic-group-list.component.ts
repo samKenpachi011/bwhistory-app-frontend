@@ -10,7 +10,8 @@ import { EthnicGroupCreateComponent } from '../ethnic-group-create/ethnic-group-
 export class EthnicGroupListComponent implements OnInit {
   //The MatDialogConfig has a position property to set the position of the dialog. The position property takes the instance of DialogPosition.
   dialogConfig = new MatDialogConfig();
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,
+    ) {}
 
   ngOnInit() {
     /**Dialog Configurations */
@@ -19,6 +20,7 @@ export class EthnicGroupListComponent implements OnInit {
   }
 
   onCreate() {
+
     this.dialogConfig.data = {
       name: null,
     };

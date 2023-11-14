@@ -18,12 +18,13 @@ const routes: Routes = [
   },
   { path:'register', component: RegisterComponent},
   {
-    path:'dashboard', component: DashboardComponent
-    //  canActivate:[authGuard]
+    path:'dashboard', component: DashboardComponent,
+      canActivate:[authGuard]
   },
   {
     path: 'ethnic-groups',
     component: EthnicGroupComponent,
+    canActivateChild:[authGuard],
     children: [
       {
         path: 'list',
