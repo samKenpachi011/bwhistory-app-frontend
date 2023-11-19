@@ -9,6 +9,11 @@ export interface IEthinicGroup {
 
 }
 
+// export interface Tag {
+//   name?: string;
+// }
+
 export interface Tag {
-  name?: string;
+  item_id?: number;
+  item_text?: string;
 }

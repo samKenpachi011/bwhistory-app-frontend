@@ -20,6 +20,7 @@ import { EthnicGroupListComponent } from './components/ethnic-group/ethnic-group
 import { EthnicGroupCreateComponent } from './components/ethnic-group/ethnic-group-create/ethnic-group-create.component';
 import { EthnicGroupDetailComponent } from './components/ethnic-group/ethnic-group-detail/ethnic-group-detail.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MatDialogModule } from '@angular/material/dialog';
       preventDuplicates: true,
     }),
     SweetAlert2Module.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     httpInterceptorProvider

@@ -39,6 +39,11 @@
             <input matInput placeholder="History" formControlName="history">
           </mat-form-field>
 
+
+          <ng-multiselect-dropdown class="auth-full-width" [settings]="dropdownTagsSettings" [data]="dropdownTagsList" formControlName="tags">
+            <mat-label>Tag</mat-label>
+
+          </ng-multiselect-dropdown>
         </mat-card-content>
       </form>
 
