@@ -10,5 +10,6 @@ export class ServiceEndPoints {
   public static readonly currentUser = `${this.apiBaseURL}/user/profile/`;
 
   public static readonly createEthnicGroup = `${this.apiBaseURL}/ethnic_group/ethnic_groups/`;
+  public static readonly getEthnicGroups = `${this.apiBaseURL}/ethnic_group/ethnic_groups/`;
 
 }

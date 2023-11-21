@@ -17,3 +17,12 @@ export interface Tag {
   item_id?: number;
   item_text?: string;
 }
+
+
+//test interface
+export interface Element {
+  name: string;
+  language: string;
+  history: string;
+  population: number;
+}
