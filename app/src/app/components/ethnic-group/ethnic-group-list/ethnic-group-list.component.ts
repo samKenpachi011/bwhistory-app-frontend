@@ -14,6 +14,7 @@ import { Element } from 'src/app/shared/models/ethnic-group.model';
 export class EthnicGroupListComponent implements OnInit {
   //The MatDialogConfig has a position property to set the position of the dialog. The position property takes the instance of DialogPosition.
   dialogConfig = new MatDialogConfig();
+  edata = [];
   constructor(
     private dialog: MatDialog,
     private apiService: AppApiService,
@@ -21,8 +22,10 @@ export class EthnicGroupListComponent implements OnInit {
     ) {}
 
     //datasource config
-    displayedColumns = ['name', 'language', 'history', 'population'];
-    dataSource = new MatTableDataSource(ELEMENT_DATA);
+    displayedColumns = ['name', 'language', 'history', 'population', 'view', 'edit','delete'];
+
+
+    dataSource = new MatTableDataSource();
 
     applyFilter(event: KeyboardEvent) {
       var filterValue = event.target as HTMLTextAreaElement;
@@ -59,9 +62,8 @@ export class EthnicGroupListComponent implements OnInit {
   //get all groups
   getAllGroups() {
     //add loading spinner
-    console.log('here......')
-    this.apiService.getEthnicGroups().subscribe({
-      next: (res) => console.log(res),
+    this.apiService.getAllEthnicGroups().subscribe({
+      next: (res) => this.dataSource = res,
       error: (e) => this.showErrorMessage(e)
     });
 
@@ -73,9 +75,3 @@ export class EthnicGroupListComponent implements OnInit {
 
   //implement a matDialog
 }
-
-const ELEMENT_DATA: Element[] = [
-  {name: 'test 1', language: 'test lan 1', history: 'history 1', population: 123},
-  {name: 'test 2', language: 'test lan 2', history: 'history 2', population: 123},
-  {name: 'test 3', language: 'test lan 3', history: 'history 3', population: 123},
-]

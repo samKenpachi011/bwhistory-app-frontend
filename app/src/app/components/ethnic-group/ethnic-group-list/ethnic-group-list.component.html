@@ -42,8 +42,43 @@
       <mat-cell *matCellDef="let element">{{ element.population }}</mat-cell>
     </ng-container>
 
+    <!-- options -->
+
+
+    <ng-container matColumnDef="view">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a mat-icon-button aria-label="view action" (click)="getAllGroups()" matTooltip="View details">
+          <mat-icon>remove_red_eye</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a aria-label="edit action" (click)="getAllGroups()" matTooltip="Edit Details">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a aria-label="delete action" (click)="getAllGroups()" matTooltip="Delete Item">
+          <mat-icon>delete_outline</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+
+
+
+
+
     <!-- Header row -->
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns" sticky:true ></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 

@@ -43,8 +43,8 @@ export class AppApiService {
 
   //get groups
   //TODO: to implement type of class group
-  getEthnicGroups(): Observable<any>{
-    return this.http.get(ServiceEndPoints.getEthnicGroups).pipe(
+  getAllEthnicGroups(): Observable<any>{
+    return this.http.get(ServiceEndPoints.getAllEthnicGroups).pipe(
       map((response:any) => {return response}));
   }
 
