@@ -1,1 +1,86 @@
 <p>ethnic-group-list works!</p>
+
+  <button mat-mini-fab color="primary" aria-label="Add" (click)="onCreate()">
+    <mat-icon>add</mat-icon>
+  </button>
+<!--
+  <button mat-mini-fab color="primary" aria-label="Add" (click)="onCreate()">
+    <mat-icon>add</mat-icon>
+  </button> -->
+
+<!-- Table -->
+
+<div class="table-container mat-elevation-z8">
+
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Language -->
+
+    <ng-container matColumnDef="language">
+      <mat-header-cell *matHeaderCellDef> Language </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.language }}</mat-cell>
+    </ng-container>
+    <!-- History -->
+    <ng-container matColumnDef="history">
+      <mat-header-cell *matHeaderCellDef> History </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.history }}</mat-cell>
+    </ng-container>
+    <!-- Population -->
+    <ng-container matColumnDef="population">
+      <mat-header-cell *matHeaderCellDef> Population </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.population }}</mat-cell>
+    </ng-container>
+
+    <!-- options -->
+
+
+    <ng-container matColumnDef="view">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a mat-icon-button aria-label="view action" (click)="getAllGroups()" matTooltip="View details">
+          <mat-icon>remove_red_eye</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a aria-label="edit action" (click)="getAllGroups()" matTooltip="Edit Details">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a aria-label="delete action" (click)="getAllGroups()" matTooltip="Delete Item">
+          <mat-icon>delete_outline</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+
+
+
+
+
+    <!-- Header row -->
+    <mat-header-row *matHeaderRowDef="displayedColumns" sticky:true ></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+</div>
+<!-- End of table -->

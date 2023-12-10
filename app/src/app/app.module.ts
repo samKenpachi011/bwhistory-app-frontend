@@ -19,6 +19,14 @@ import { EthnicGroupComponent } from './components/ethnic-group/ethnic-group-com
 import { EthnicGroupListComponent } from './components/ethnic-group/ethnic-group-list/ethnic-group-list.component';
 import { EthnicGroupCreateComponent } from './components/ethnic-group/ethnic-group-create/ethnic-group-create.component';
 import { EthnicGroupDetailComponent } from './components/ethnic-group/ethnic-group-detail/ethnic-group-detail.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -42,12 +50,20 @@ import { EthnicGroupDetailComponent } from './components/ethnic-group/ethnic-gro
     HttpClientModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatTabsModule,
+
     ToastrModule.forRoot({
       closeButton: true,
       timeOut: 10000,
       preventDuplicates: true,
     }),
     SweetAlert2Module.forRoot(),
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [
     httpInterceptorProvider
