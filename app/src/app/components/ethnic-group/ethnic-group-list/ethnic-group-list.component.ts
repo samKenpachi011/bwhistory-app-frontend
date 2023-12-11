@@ -5,6 +5,7 @@ import { EthnicGroupCreateComponent } from '../ethnic-group-create/ethnic-group-
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { Element } from 'src/app/shared/models/ethnic-group.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ethnic-group-list',
@@ -19,10 +20,11 @@ export class EthnicGroupListComponent implements OnInit {
     private dialog: MatDialog,
     private apiService: AppApiService,
     private toastr: ToastrService,
+    private router: Router,
     ) {}
 
     //datasource config
-    displayedColumns = ['name', 'language', 'history', 'population', 'view', 'edit','delete'];
+    displayedColumns = ['id','name', 'language', 'history', 'population', 'view', 'edit','delete'];
 
 
     dataSource = new MatTableDataSource();
@@ -67,6 +69,12 @@ export class EthnicGroupListComponent implements OnInit {
       error: (e) => this.showErrorMessage(e)
     });
 
+  }
+
+  // open detailed view
+  onViewEthnicGroupDetails(group_id: number){
+    const urlParams = {id: group_id}
+    this.router.navigate(['ethnic-groups/details', urlParams]);
   }
 
   showErrorMessage(e: any) {
