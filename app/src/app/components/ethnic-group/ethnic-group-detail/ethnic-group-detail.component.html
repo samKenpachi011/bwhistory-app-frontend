@@ -1,1 +1,26 @@
-<p>ethnic-group-detail works!</p>
+
+<button mat-mini-fab color="primary" aria-label="Back" routerLink="/ethnic-groups/list">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<mat-card class="example-card">
+  <img mat-card-image src="https://mdbcdn.b-cdn.net/img/new/standard/nature/182.webp" alt="nature">
+  <mat-card-header>
+    <mat-card-title>{{group_data.name}}</mat-card-title>
+    <mat-card-subtitle>{{group_data.description}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><span>Language</span>{{group_data.language}}</p>
+    <!-- TODO: population and geo pipes -->
+    <p><span>Population</span>: {{group_data.population}}</p>
+    <p><span>Location</span>: {{group_data.geography}}</p>
+    <p><span>History</span>: {{group_data.history}}</p>
+      <ul>
+        <li *ngFor="let tag of group_data.tags">
+          {{ tag.name }}
+        </li>
+      </ul>
+  </mat-card-content>
+
+
+
+</mat-card>
