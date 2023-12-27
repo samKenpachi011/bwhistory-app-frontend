@@ -36,16 +36,20 @@ export class AppApiService {
 
   //ethnic group
   createEthnicGroup(data: any){
-    console.log(data)
     return this.http.post(ServiceEndPoints.createEthnicGroup, data);
 
   }
 
-  //get groups
+  // ethnic group
   //TODO: to implement type of class group
   getAllEthnicGroups(): Observable<any>{
     return this.http.get(ServiceEndPoints.getAllEthnicGroups).pipe(
       map((response:any) => {return response}));
   }
+
+  getEthnicGroupById(id: number){
+    return this.http.get(ServiceEndPoints.getEthnicGroupById+`${id}`);
+  }
+
 
 }

@@ -19,6 +19,16 @@
   </div>
 
   <mat-table #table [dataSource]="dataSource">
+    <!-- id -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>
+        #
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+
+    </ng-container>
+
+
     <!-- Name -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -48,7 +58,7 @@
     <ng-container matColumnDef="view">
       <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
       <mat-cell mat-cell *matCellDef="let element">
-        <a mat-icon-button aria-label="view action" (click)="getAllGroups()" matTooltip="View details">
+        <a mat-icon-button aria-label="view action" (click)="onViewEthnicGroupDetails(element.id)" matTooltip="View details">
           <mat-icon>remove_red_eye</mat-icon>
         </a>
       </mat-cell>

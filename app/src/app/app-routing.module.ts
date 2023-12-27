@@ -7,6 +7,7 @@ import { authGuard } from './auth/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { EthnicGroupComponent } from './components/ethnic-group/ethnic-group-component';
 import { EthnicGroupListComponent } from './components/ethnic-group/ethnic-group-list/ethnic-group-list.component';
+import { EthnicGroupDetailComponent } from './components/ethnic-group/ethnic-group-detail/ethnic-group-detail.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '', pathMatch:'full'},
@@ -29,7 +30,13 @@ const routes: Routes = [
       {
         path: 'list',
         component: EthnicGroupListComponent,
+      },
+      {
+        path: 'details',
+        component: EthnicGroupDetailComponent,
+        canActivateChild:[authGuard],
       }
+
     ]
   }
 
