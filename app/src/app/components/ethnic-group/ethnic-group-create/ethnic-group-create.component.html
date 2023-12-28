@@ -7,13 +7,13 @@
 
     <mat-card class="box ">
       <mat-card-header>
-        <mat-card-title>Create Ethnic Group</mat-card-title>
+        <mat-card-title>{{ formTitle }}</mat-card-title>
       </mat-card-header>
       <form class="xform-form" [formGroup]="ethnicGroupForm">
         <mat-card-content>
           <mat-form-field class="auth-full-width" appearance="outline">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" formControlName="name">
+            <input matInput placeholder="Name" formControlName="name" required>
           </mat-form-field>
 
           <mat-form-field class="auth-full-width" appearance="outline">
@@ -56,4 +56,6 @@
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button [mat-dialog-close]="true" (click)="onSubmit()">Submit</button>
+  <!-- to display on dialogData exist -->
+  <button mat-button [mat-dialog-close]="true" (click)="onSubmitUpdate()">Update</button>
 </mat-dialog-actions>

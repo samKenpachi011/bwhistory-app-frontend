@@ -20,34 +20,40 @@ export class EthnicGroupListComponent implements OnInit {
     private dialog: MatDialog,
     private apiService: AppApiService,
     private toastr: ToastrService,
-    private router: Router,
-    ) {}
+    private router: Router
+  ) {}
 
-    //datasource config
-    displayedColumns = ['id','name', 'language', 'history', 'population', 'view', 'edit','delete'];
+  //datasource config
+  displayedColumns = [
+    'id',
+    'name',
+    'language',
+    'history',
+    'population',
+    'view',
+    'edit',
+    'delete',
+  ];
 
+  dataSource = new MatTableDataSource();
 
-    dataSource = new MatTableDataSource();
+  applyFilter(event: KeyboardEvent) {
+    var filterValue = event.target as HTMLTextAreaElement;
 
-    applyFilter(event: KeyboardEvent) {
-      var filterValue = event.target as HTMLTextAreaElement;
-
-      var trimfilterValue = filterValue.value.trim(); // Remove whitespace
-      var lcfilterValue = trimfilterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-      this.dataSource.filter = lcfilterValue;
-    }
+    var trimfilterValue = filterValue.value.trim(); // Remove whitespace
+    var lcfilterValue = trimfilterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = lcfilterValue;
+  }
 
   ngOnInit() {
-
     //all groups
-    this.getAllGroups()
+    this.getAllGroups();
     /**Dialog Configurations */
     this.dialogConfig.width = '700px';
     this.dialogConfig.autoFocus = true;
   }
 
   onCreate() {
-
     this.dialogConfig.data = {
       name: null,
     };
@@ -65,21 +71,31 @@ export class EthnicGroupListComponent implements OnInit {
   getAllGroups() {
     //add loading spinner
     this.apiService.getAllEthnicGroups().subscribe({
-      next: (res) => this.dataSource = res,
-      error: (e) => this.showErrorMessage(e)
+      next: (res) => (this.dataSource = res),
+      error: (e) => this.showErrorMessage(e),
     });
-
   }
 
   // open detailed view
-  onViewEthnicGroupDetails(group_id: number){
-    const urlParams = {id: group_id}
+  onViewEthnicGroupDetails(group_id: number) {
+    const urlParams = { id: group_id };
     this.router.navigate(['ethnic-groups/details', urlParams]);
+  }
+
+  // edit
+  openGroupEditDialog(group_id: number) {
+    this.dialogConfig.data = {
+      id: group_id,
+    };
+    this.dialog
+      .open(EthnicGroupCreateComponent, this.dialogConfig)
+      .afterClosed()
+      .subscribe((res) => {
+        console.log('Dialog closed');
+      });
   }
 
   showErrorMessage(e: any) {
     this.toastr.error(e.message);
   }
-
-  //implement a matDialog
 }
