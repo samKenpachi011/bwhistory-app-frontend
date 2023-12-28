@@ -67,7 +67,7 @@
     <ng-container matColumnDef="edit">
       <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
       <mat-cell mat-cell *matCellDef="let element">
-        <a aria-label="edit action" (click)="getAllGroups()" matTooltip="Edit Details">
+        <a aria-label="edit action" (click)="openGroupEditDialog(element.id)" matTooltip="Edit Details">
           <mat-icon>edit</mat-icon>
         </a>
       </mat-cell>

@@ -48,7 +48,13 @@ export class AppApiService {
   }
 
   getEthnicGroupById(id: number){
-    return this.http.get(ServiceEndPoints.getEthnicGroupById+`${id}`);
+    return this.http.get(ServiceEndPoints.createEthnicGroup+`${id}`);
+  }
+
+  updateEthnicGroupById(id: number,data: any){
+    return this.http.patch(ServiceEndPoints.createEthnicGroup+`${id}/`, data);
+
+
   }
 
 

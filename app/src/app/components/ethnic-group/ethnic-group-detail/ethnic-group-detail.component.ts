@@ -9,7 +9,6 @@ import { AppApiService } from 'src/app/services/app-api-service.service';
 })
 export class EthnicGroupDetailComponent {
   group_id: any;
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   group_data: any;
   constructor(
     private _router: ActivatedRoute,
