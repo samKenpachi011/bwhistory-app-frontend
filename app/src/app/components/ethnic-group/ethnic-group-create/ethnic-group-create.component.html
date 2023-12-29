@@ -1,61 +1,78 @@
+<mat-dialog-content class="xform-form">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>{{ formTitle }}</mat-card-title>
+    </mat-card-header>
+    <form class="xform-form" [formGroup]="ethnicGroupForm" (reset)="onReset($event)">
+      <mat-card-content>
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" required />
+        </mat-form-field>
 
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            placeholder="Description"
+            formControlName="description"
+          />
+        </mat-form-field>
 
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>Language</mat-label>
+          <input matInput placeholder="Language" formControlName="language" />
+        </mat-form-field>
 
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>Population</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Population"
+            formControlName="population"
+          />
+        </mat-form-field>
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>Geography</mat-label>
+          <input matInput placeholder="Geography" formControlName="geography" />
+        </mat-form-field>
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>History</mat-label>
+          <input matInput placeholder="History" formControlName="history" />
+        </mat-form-field>
 
+        <ng-multiselect-dropdown
+          class="auth-full-width"
+          [settings]="dropdownTagsSettings"
+          [data]="dropdownTagsList"
+          formControlName="tags"
+        >
+          <mat-label>Tag</mat-label>
+        </ng-multiselect-dropdown>
 
-<mat-dialog-content class="xform-form" >
-
-    <mat-card class="box ">
-      <mat-card-header>
-        <mat-card-title>{{ formTitle }}</mat-card-title>
-      </mat-card-header>
-      <form class="xform-form" [formGroup]="ethnicGroupForm">
-        <mat-card-content>
-          <mat-form-field class="auth-full-width" appearance="outline">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" formControlName="name" required>
-          </mat-form-field>
-
-          <mat-form-field class="auth-full-width" appearance="outline">
-            <mat-label>Description</mat-label>
-            <input matInput placeholder="Description" formControlName="description">
-          </mat-form-field>
-
-          <mat-form-field class="auth-full-width" appearance="outline">
-            <mat-label>Language</mat-label>
-            <input matInput placeholder="Language" formControlName="language">
-          </mat-form-field>
-
-          <mat-form-field class="auth-full-width" appearance="outline">
-            <mat-label>Population</mat-label>
-            <input matInput type="number" placeholder="Population" formControlName="population">
-          </mat-form-field>
-          <mat-form-field class="auth-full-width" appearance="outline">
-            <mat-label>Geography</mat-label>
-            <input matInput placeholder="Geography" formControlName="geography">
-          </mat-form-field>
-          <mat-form-field class="auth-full-width" appearance="outline">
-            <mat-label>History</mat-label>
-            <input matInput placeholder="History" formControlName="history">
-          </mat-form-field>
-
-
-          <ng-multiselect-dropdown class="auth-full-width" [settings]="dropdownTagsSettings" [data]="dropdownTagsList" formControlName="tags">
-            <mat-label>Tag</mat-label>
-
-          </ng-multiselect-dropdown>
-        </mat-card-content>
-      </form>
-
-
-
-    </mat-card>
-
-
+        <button type="reset" [disabled]="ethnicGroupForm.pristine">
+          reset
+        </button>
+      </mat-card-content>
+    </form>
+  </mat-card>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" (click)="onSubmit()">Submit</button>
-  <!-- to display on dialogData exist -->
-  <button mat-button [mat-dialog-close]="true" (click)="onSubmitUpdate()">Update</button>
+  <div *ngIf="!isEdit; else editing">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="onSubmit()">
+      Submit
+    </button>
+    <button mat-button  (click)="onClear()">
+      Clear
+    </button>
+  </div>
+  <ng-template #editing>
+    <button mat-button (click)="onSubmitUpdate()">
+      Update
+    </button>
+
+    <button mat-button mat-dialog-close>Cancel</button>
+  </ng-template>
 </mat-dialog-actions>

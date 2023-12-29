@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { AppApiService } from 'src/app/services/app-api-service.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Tag } from 'src/app/shared/models/ethnic-group.model';
@@ -19,6 +19,12 @@ export class EthnicGroupCreateComponent {
   dropdownTagsSettings: IDropdownSettings = {};
   formTitle: string = 'Create Ethnic Group';
   group_data: any;
+  isEdit: boolean = false;
+  _initialFormValues: any;
+
+
+  @ViewChild(FormGroupDirective)
+  private formDir!: FormGroupDirective
 
 
   constructor(
@@ -74,7 +80,9 @@ export class EthnicGroupCreateComponent {
     if (this.dialogdata.id) {
       // fetch group data
       this.formTitle = 'Edit Ethhnic Group';
+      this.isEdit = true;
       this._getEGroup();
+      this._initialFormValues = this.ethnicGroupForm.value;
     }
   }
 
@@ -140,6 +148,7 @@ export class EthnicGroupCreateComponent {
       },
       error: (e) => console.log(e),
     });
+    this._initialFormValues = this.ethnicGroupForm.value;
   }
 
   submitUpdatedGroupData(data: any) {
@@ -149,6 +158,7 @@ export class EthnicGroupCreateComponent {
       },
       error: (e) => this.toastr.error(e, 'Group Update')
     });
+    this._initialFormValues = this.ethnicGroupForm.value;
   }
 
   //get group details
@@ -166,9 +176,19 @@ export class EthnicGroupCreateComponent {
           history: this.group_data.history,
           tags: this.group_data.tags.map(({...res}) => { return {name: res['name']}}),
         });
+        this._initialFormValues = this.ethnicGroupForm.value;
       },
       error: (e) => this.showErrorMessage(e)
-    })
+    });
+
+  }
+
+  onClear(){
+    this.ethnicGroupForm.reset();
+  }
+  onReset(e: Event){
+    e.preventDefault();
+    this.formDir.resetForm(this._initialFormValues);
   }
 
   getTags() {
