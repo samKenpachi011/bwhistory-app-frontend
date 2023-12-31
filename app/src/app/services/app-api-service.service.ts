@@ -13,49 +13,52 @@ export class AppApiService {
     private storageManager: LocalStoragManagerService
   ) {}
 
-  registerUser(data: any){
+  registerUser(data: any) {
     return this.http.post(ServiceEndPoints.registerUser, data);
   }
 
-  attemptLogIn(data: any){
-    return this.http.post(
-      ServiceEndPoints.logInUser,
-      data).pipe(map(response => {
+  attemptLogIn(data: any) {
+    return this.http.post(ServiceEndPoints.logInUser, data).pipe(
+      map((response) => {
         if (this.storageManager.tokenManagerRemove() === false) {
           this.storageManager.tokenManagerAdd(response);
         }
-      }));
+      })
+    );
   }
 
-  isUserStaff(): Observable<any>{
+  isUserStaff(): Observable<any> {
     return this.http.get(ServiceEndPoints.currentUser).pipe(
-      map((response:any) => {return response['is_staff'] === true})
-
-      );
+      map((response: any) => {
+        return response['is_staff'] === true;
+      })
+    );
   }
 
   //ethnic group
-  createEthnicGroup(data: any){
+  createEthnicGroup(data: any) {
     return this.http.post(ServiceEndPoints.createEthnicGroup, data);
-
   }
 
   // ethnic group
   //TODO: to implement type of class group
-  getAllEthnicGroups(): Observable<any>{
+  getAllEthnicGroups(): Observable<any> {
     return this.http.get(ServiceEndPoints.getAllEthnicGroups).pipe(
-      map((response:any) => {return response}));
+      map((response: any) => {
+        return response;
+      })
+    );
   }
 
-  getEthnicGroupById(id: number){
-    return this.http.get(ServiceEndPoints.createEthnicGroup+`${id}`);
+  getEthnicGroupById(id: number) {
+    return this.http.get(ServiceEndPoints.createEthnicGroup + `${id}`);
   }
 
-  updateEthnicGroupById(id: number,data: any){
-    return this.http.patch(ServiceEndPoints.createEthnicGroup+`${id}/`, data);
-
-
+  updateEthnicGroupById(id: number, data: any) {
+    return this.http.patch(ServiceEndPoints.createEthnicGroup + `${id}/`, data);
   }
 
-
+  deleteEthnicGroupById(id: number) {
+    return this.http.delete(ServiceEndPoints.createEthnicGroup + `${id}`);
+  }
 }

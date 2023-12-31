@@ -31,7 +31,7 @@ export class AppNavComponent {
         }
         else{
           Swal.fire({
-            title: 'LogOu Attempt',
+            title: 'LogOut Attempt',
             text: 'LogOut Failed please try again',
             icon: 'warning',
             confirmButtonText:'Ok'
