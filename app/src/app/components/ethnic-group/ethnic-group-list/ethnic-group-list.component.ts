@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { Element } from 'src/app/shared/models/ethnic-group.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ethnic-group-list',
@@ -93,6 +94,36 @@ export class EthnicGroupListComponent implements OnInit {
       .subscribe((res) => {
         console.log('Dialog closed');
       });
+  }
+
+  //delete group
+  onGroupDelete(group_id: number) {
+    Swal.fire({
+      title: "Are you sure you want to delete this group?",
+      text: "This action won't be reverted!",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `No`,
+      icon: "warning",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        //subscribe to delete service
+        this.apiService.deleteEthnicGroupById(group_id).subscribe({
+          next: (res) => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Group has been deleted.",
+              icon: "success"
+            });
+            this.getAllGroups();
+        },
+        error: (e) => { this.toastr.error(e.message)}});
+
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+
   }
 
   showErrorMessage(e: any) {
