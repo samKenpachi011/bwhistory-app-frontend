@@ -26,6 +26,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CultureListComponent } from './components/culture/culture-list/culture-list.component';
+import { CultureCreateComponent } from './components/culture/culture-create/culture-create.component';
+import { CultureDetailComponent } from './components/culture/culture-detail/culture-detail.component';
+import { CultureComponent } from './components/culture/culture-component';
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     EthnicGroupComponent,
     EthnicGroupListComponent,
     EthnicGroupCreateComponent,
-    EthnicGroupDetailComponent
+    EthnicGroupDetailComponent,
+    CultureComponent,
+    CultureListComponent,
+    CultureCreateComponent,
+    CultureDetailComponent
   ],
   imports: [
     BrowserModule,
