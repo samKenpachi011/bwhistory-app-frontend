@@ -72,7 +72,7 @@ export class EthnicGroupListComponent implements OnInit {
   getAllGroups() {
     //add loading spinner
     this.apiService.getAllEthnicGroups().subscribe({
-      next: (res) => (this.dataSource = res),
+      next: (res) => this.dataSource = res,
       error: (e) => this.showErrorMessage(e),
     });
   }
