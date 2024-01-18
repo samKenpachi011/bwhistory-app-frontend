@@ -70,4 +70,12 @@ export class AppApiService {
       }) );
 
   }
+
+  createCulture(data:any){
+    return this.http.post(ServiceEndPoints.createCulture, data)
+  }
+  updatesCulture(){}
+  deleteCulture(){}
+
+
 }

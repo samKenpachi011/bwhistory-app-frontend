@@ -14,5 +14,5 @@ export class ServiceEndPoints {
 
   //cultures
   public static readonly getAllCultures = `${this.apiBaseURL}/culture/culture/`;
-
+  public static readonly createCulture = `${this.apiBaseURL}/culture/culture/`;
 }
