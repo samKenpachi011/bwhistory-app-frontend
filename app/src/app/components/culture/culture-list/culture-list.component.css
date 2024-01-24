@@ -8,7 +8,6 @@
   min-height: 64px;
   padding: 8px 24px 0;
 }
-
 .mat-form-field {
   font-size: 14px;
   width: 50%;
@@ -35,6 +34,14 @@
   justify-content: center;
   align-items: center;
   height: 20vh;
+
+}
+.left-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 10svh;
+  cursor: pointer;
 
 }
 .custom-btn-radius {

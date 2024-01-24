@@ -72,10 +72,21 @@ export class AppApiService {
   }
 
   createCulture(data:any){
-    return this.http.post(ServiceEndPoints.createCulture, data)
+    return this.http.post(ServiceEndPoints.createCulture, data);
   }
-  updatesCulture(){}
-  deleteCulture(){}
+
+  getCultureById(id: number) {
+
+    return this.http.get(ServiceEndPoints.createCulture + `${id}`);
+  }
+
+  updateCultureById(id:number, data: any){
+    return this.http.patch(ServiceEndPoints.createCulture + `${id}/`, data);
+  }
+
+  deleteCulture(id: number){
+    return this.http.delete(ServiceEndPoints.createCulture + `${id}`);
+  }
 
 
 }

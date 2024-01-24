@@ -3,10 +3,20 @@
 <!-- alert message for no data  -->
 <!-- culture list  -->
 <!-- Table -->
-
+<!--  add button -->
+<div class="left-container" >
+  <button mat-raised-button color="primary" class="custom-btn-radius" (click)="onCreateCulture()">
+      <mat-icon>add</mat-icon> Add Culture
+  </button>
+</div>
 <div *ngIf="isDataLoaded; else noDataToDisplay">
 <div class="table-container mat-elevation-z8">
 
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
+  </div>
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
@@ -62,7 +72,6 @@
   <button mat-raised-button color="primary" class="custom-btn-radius" (click)="onCreateCulture()">
       <mat-icon>add</mat-icon> Add Culture
   </button>
-
 </div>
 
 </ng-template>
