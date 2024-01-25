@@ -27,15 +27,10 @@ export class CultureListComponent {
 
   dataSource = new MatTableDataSource();
 
-  applyFilter(event: KeyboardEvent){
+  applyCultureFilter(event: Event){
 
-    var filterValue = event.target as HTMLTextAreaElement;
-
-
-    var trimfilterValue = filterValue.value.trim(); // Remove whitespace
-    var lcfilterValue = trimfilterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = lcfilterValue;
-    //this.dataSource.filter = filterValue.value.trim().toLowerCase();
+    var filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
   //TODO: to add load overlay + no data overlay
@@ -53,7 +48,7 @@ export class CultureListComponent {
       next: (res) => {
         if (res != null && res.length > 0) {
           this.isDataLoaded = true;
-          this.dataSource = res;
+          this.dataSource.data = res;
         }
 
         //   if (array === undefined || array.length == 0) {
@@ -66,7 +61,10 @@ export class CultureListComponent {
     });
   }
 
-  onViewCultureDetails(id: number) {}
+  onViewCultureDetails(id: number) {
+    const urlParams = { id: id };
+    this.router.navigate(['culture/details', urlParams]);
+  }
   openCultureEditDialog(id: number) {
     this.dialogConfig.data = {
       id: id,

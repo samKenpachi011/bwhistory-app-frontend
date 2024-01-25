@@ -65,28 +65,25 @@ export class AppApiService {
   //cultures
   getAllCultures(): Observable<any> {
     return this.http.get(ServiceEndPoints.getAllCultures).pipe(
-      map((res: any) =>{
+      map((res: any) => {
         return res;
-      }) );
-
+      })
+    );
   }
 
-  createCulture(data:any){
+  createCulture(data: any) {
     return this.http.post(ServiceEndPoints.createCulture, data);
   }
 
   getCultureById(id: number) {
-
     return this.http.get(ServiceEndPoints.createCulture + `${id}`);
   }
 
-  updateCultureById(id:number, data: any){
+  updateCultureById(id: number, data: any) {
     return this.http.patch(ServiceEndPoints.createCulture + `${id}/`, data);
   }
 
-  deleteCulture(id: number){
+  deleteCulture(id: number) {
     return this.http.delete(ServiceEndPoints.createCulture + `${id}`);
   }
-
-
 }
