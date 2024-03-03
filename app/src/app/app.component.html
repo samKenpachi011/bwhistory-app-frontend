@@ -1,2 +1,98 @@
+<style>
+  mat-list-item {
+    width: 230px;
+    text-decoration: none;
+    padding: 1em;
+    cursor: pointer;
+  }
+  mat-list-item::after {
+    width: 24px;
+    text-align: center;
+  }
 
-<router-outlet></router-outlet>
+  mat-icon {
+    padding-right: 1em;
+
+  }
+
+  mat-list-item:hover{
+      background-color: #e1f1fc;
+      border-radius: 5px;
+      padding: 0.8em;
+  }
+  .toolbar-item-spacer {
+    flex: 1 1 auto;
+  }
+
+  .app-container {
+    height: 90%;
+    margin: 0;
+  }
+
+  .app-sidenav {
+    width: 230px;
+  }
+
+  .app-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+
+<mat-toolbar color="primary">
+  <button mat-icon-button matTooltip="Menu" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>HeritageBW.</span>
+  <span class="toolbar-item-spacer"></span>
+  <button mat-icon-button matTooltip="Notifications">
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    matTooltip="Settings"
+    [matMenuTriggerFor]="settingsMenu"
+  >
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <!-- Settings Submenu -->
+  <mat-menu #settingsMenu [overlapTrigger]="false" yPosition="below">
+    <button mat-menu-item routerLink="#">
+      <mat-icon>settings</mat-icon><span>Settings</span>
+    </button>
+    <button mat-menu-item routerLink="#">
+      <mat-icon>exit_to_app</mat-icon><span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    class="app-sidenav"
+    [class.mat-elevation-z4]="true"
+  >
+    <mat-nav-list>
+      <mat-list-item routerLink="/dashboard">
+        <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <mat-list-item routerLink="/ethnic-groups/list">
+      <mat-icon> people_outline </mat-icon><span>Ethinic Groups</span>
+    </mat-list-item>
+    <mat-list-item routerLink="/culture/list">
+      <mat-icon>folder_open</mat-icon><span>Cultures</span>
+    </mat-list-item>
+    <mat-list-item routerLink="#">
+      <mat-icon>folder_open</mat-icon><span>Archives</span>
+    </mat-list-item>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
