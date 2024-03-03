@@ -12,4 +12,7 @@ export class ServiceEndPoints {
   public static readonly createEthnicGroup = `${this.apiBaseURL}/ethnic_group/ethnic_groups/`;
   public static readonly getAllEthnicGroups = `${this.apiBaseURL}/ethnic_group/ethnic_groups/`;
 
+  //cultures
+  public static readonly getAllCultures = `${this.apiBaseURL}/culture/culture/`;
+  public static readonly createCulture = `${this.apiBaseURL}/culture/culture/`;
 }

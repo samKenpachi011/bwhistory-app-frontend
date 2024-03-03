@@ -8,6 +8,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { EthnicGroupComponent } from './components/ethnic-group/ethnic-group-component';
 import { EthnicGroupListComponent } from './components/ethnic-group/ethnic-group-list/ethnic-group-list.component';
 import { EthnicGroupDetailComponent } from './components/ethnic-group/ethnic-group-detail/ethnic-group-detail.component';
+import { CultureComponent } from './components/culture/culture-component';
+import { CultureListComponent } from './components/culture/culture-list/culture-list.component';
+import { CultureDetailComponent } from './components/culture/culture-detail/culture-detail.component';
 
 const routes: Routes = [
   {path:'', redirectTo: '', pathMatch:'full'},
@@ -37,6 +40,22 @@ const routes: Routes = [
         canActivateChild:[authGuard],
       }
 
+    ]
+  },
+  {
+    path: 'culture',
+    component: CultureComponent,
+    canActivateChild:[authGuard],
+    children: [
+      {
+        path: 'list',
+        component: CultureListComponent,
+      },
+      {
+        path: 'details',
+        component: CultureDetailComponent,
+        canActivateChild:[authGuard],
+      }
     ]
   }
 

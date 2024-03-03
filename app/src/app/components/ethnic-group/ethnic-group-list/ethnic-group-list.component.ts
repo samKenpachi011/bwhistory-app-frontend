@@ -39,11 +39,9 @@ export class EthnicGroupListComponent implements OnInit {
   dataSource = new MatTableDataSource();
 
   applyFilter(event: KeyboardEvent) {
-    var filterValue = event.target as HTMLTextAreaElement;
 
-    var trimfilterValue = filterValue.value.trim(); // Remove whitespace
-    var lcfilterValue = trimfilterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = lcfilterValue;
+    var filterValue = (event.target as HTMLTextAreaElement).value.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 
   ngOnInit() {
@@ -70,9 +68,9 @@ export class EthnicGroupListComponent implements OnInit {
 
   //get all groups
   getAllGroups() {
-    //add loading spinner
+    //TODO: add loading spinner
     this.apiService.getAllEthnicGroups().subscribe({
-      next: (res) => (this.dataSource = res),
+      next: (res) => this.dataSource.data = res,
       error: (e) => this.showErrorMessage(e),
     });
   }

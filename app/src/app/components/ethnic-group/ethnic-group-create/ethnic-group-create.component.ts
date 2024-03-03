@@ -4,7 +4,7 @@ import { AppApiService } from 'src/app/services/app-api-service.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Tag } from 'src/app/shared/models/ethnic-group.model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ethnic-group-create',
@@ -114,6 +114,7 @@ export class EthnicGroupCreateComponent {
       error: (e) => console.log(e),
     });
   }
+
   onSubmitUpdate() {
     //get the current user to patch to the data
     this.apiService.isUserStaff().subscribe({

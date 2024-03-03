@@ -1,4 +1,25 @@
 <style>
+  mat-list-item {
+    width: 230px;
+    text-decoration: none;
+    padding: 1em;
+    cursor: pointer;
+  }
+  mat-list-item::after {
+    width: 24px;
+    text-align: center;
+  }
+
+  mat-icon {
+    padding-right: 1em;
+
+  }
+
+  mat-list-item:hover{
+      background-color: #e1f1fc;
+      border-radius: 5px;
+      padding: 0.8em;
+  }
   .toolbar-item-spacer {
     flex: 1 1 auto;
   }
@@ -56,20 +77,21 @@
     [class.mat-elevation-z4]="true"
   >
     <mat-nav-list>
-      <mat-list-item routerLink="#">
+      <mat-list-item routerLink="/dashboard">
         <mat-icon>dashboard</mat-icon><span>Dashboard</span>
       </mat-list-item>
     </mat-nav-list>
+
     <mat-list-item routerLink="/ethnic-groups/list">
       <mat-icon> people_outline </mat-icon><span>Ethinic Groups</span>
     </mat-list-item>
-    <mat-list-item routerLink="#">
-      <mat-icon>folder_open</mat-icon><span>Artifacts</span>
+    <mat-list-item routerLink="/culture/list">
+      <mat-icon>folder_open</mat-icon><span>Cultures</span>
     </mat-list-item>
     <mat-list-item routerLink="#">
       <mat-icon>folder_open</mat-icon><span>Archives</span>
     </mat-list-item>
-    <mat-expansion-panel [class.mat-elevation-z0]="true">
+    <!-- <mat-expansion-panel [class.mat-elevation-z0]="true">
       <mat-expansion-panel-header>
         <mat-icon>place</mat-icon>Locations
       </mat-expansion-panel-header>
@@ -78,7 +100,9 @@
         <a mat-list-item routerLink="#">HeritageSites</a>
         <a mat-list-item routerLink="#">Villages</a>
       </mat-nav-list>
-    </mat-expansion-panel>
+    </mat-expansion-panel> -->
   </mat-sidenav>
-  <mat-sidenav-content> Components open here </mat-sidenav-content>
+  <mat-sidenav-content>
+  <app-root></app-root>
+  </mat-sidenav-content>
 </mat-sidenav-container>

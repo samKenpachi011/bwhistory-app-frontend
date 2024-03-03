@@ -1,0 +1,47 @@
+<mat-dialog-content>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> {{ formTitle }}</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="cultureForm" (reset)="OnReset($event)">
+      <mat-card-content>
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" required />
+        </mat-form-field>
+
+        <mat-form-field class="auth-full-width" appearance="outline">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            placeholder="Description"
+            formControlName="description"
+          />
+        </mat-form-field>
+
+
+      </mat-card-content>
+
+      <button type="reset" [disabled]="cultureForm.pristine">reset</button>
+    </form>
+  </mat-card>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <div *ngIf="!isEdit; else editing">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="onSubmit()">
+      Submit
+    </button>
+    <button mat-button  (click)="onClear()">
+      Clear
+    </button>
+  </div>
+  <ng-template #editing>
+    <button mat-button (click)="onSubmitUpdate()">
+      Update
+    </button>
+
+    <button mat-button mat-dialog-close>Cancel</button>
+  </ng-template>
+</mat-dialog-actions>

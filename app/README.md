@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+## Form Build
+### using (`_formBuild`)
+Benefits:
+- Modularity: separating formbuild and onInit enhances modularity making the code easier to understand and maintain.
+- Encapsulation: form building logic is within its own method.
+- Reusability: the method can be used in another part of the component reducing redundancy.

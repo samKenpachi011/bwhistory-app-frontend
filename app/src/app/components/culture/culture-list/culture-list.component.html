@@ -1,0 +1,80 @@
+<!-- bread crumb -->
+
+<!-- alert message for no data  -->
+<!-- culture list  -->
+<!-- Table -->
+<!--  add button -->
+
+<div class="left-container" >
+  <button mat-raised-button color="primary" class="custom-btn-radius" (click)="onCreateCulture()">
+      <mat-icon>add</mat-icon> Add Culture
+  </button>
+</div>
+<div *ngIf="isDataLoaded; else noDataToDisplay">
+
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyCultureFilter($event)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+<div class="table-container mat-elevation-z8">
+
+
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+
+
+    <!-- options -->
+    <ng-container matColumnDef="view">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a mat-icon-button aria-label="view action" (click)="onViewCultureDetails(element.id)" matTooltip="View details">
+          <mat-icon>remove_red_eye</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a aria-label="edit action" (click)="openCultureEditDialog(element.id)" matTooltip="Edit Details">
+          <mat-icon>edit</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element">
+        <a aria-label="delete action" (click)="onCultureDelete(element.id)" matTooltip="Delete Item">
+          <mat-icon>delete_outline</mat-icon>
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns" sticky:true></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+  </mat-table>
+</div>
+
+</div>
+
+<ng-template #noDataToDisplay>
+  <div class="alert alert-danger">
+    <strong>Oops!</strong> There is no data to display...
+  </div>
+<!-- TODO: Add a button to add culture - twitter style -->
+<div class="center-container" >
+  <button mat-raised-button color="primary" class="custom-btn-radius" (click)="onCreateCulture()">
+      <mat-icon>add</mat-icon> Add Culture
+  </button>
+</div>
+
+</ng-template>
